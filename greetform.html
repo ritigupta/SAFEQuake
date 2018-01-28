@@ -1,0 +1,33 @@
+<!HTML DOCTYPE>
+<html>
+<head>
+<title>{{page_title}}</title>
+<style>
+	h1 {font-size: 5em; color: #c0392b; font-family: "Roboto"; font-weight: 500; padding-left: 0.03em;line-height: 30px}
+	h2 {font-size: 2em; color: #000000; font-family: "Roboto"; font-weight: 300; font-style: italic; padding-left: 0.05em}
+	h3 {font-size: 1.2em; color: #000000; font-family: "Roboto"; font-weight: 400; padding-left: 0.05em;line-height: 20px}
+	h4 {font-size: 1.3em; color: #000000; background-color: #f1c40f; font-family: "Roboto";text-align:center;font-weight:lighter}
+	body {background-image: url("http://www.itmethods.com/wp-content/uploads/2017/01/globe-map3.png"); background-repeat: no-repeat; background-size: cover; background-position: center center}
+	span {font-size: 1em; color: #000000; background-color: #f1c40f; font-family: "Roboto";text-align:center;font-weight:normal}
+	form {font-family: "Roboto"; font-size: 1em; font-weight: 300; color: #000000; padding-left: 0.05em}
+	/*input {background-color: #f1c40f; padding: 1em}*/
+	input{-webkit-border-radius: 30;-moz-border-radius: 30;
+  border-radius: 30px;font-family: Roboto; font-size: 1em; color: #ffffff;font-size: 20px;padding-left: 20px;background: #3780b8;padding: 10px 25px 10px 25px;
+  text-decoration: none;} nput:hover {background: #244b92;text-decoration: none;}
+</style>
+</head>
+<body>
+<h4>Text your "FirstName LastName, Age (Country)" to <span>+1-(334)-339-7233</span> to mark yourself as safe.</h4>
+<h1>(SAFE)Quake</h1>
+<h2>Select an earthquake to learn more.</h2>
+<div>
+	<h3>Recent Earthquakes:</h3>
+	<form action = "gresponse" method = 'post'>
+		{% for earthquake in scaryearthquakes %}
+			<input type="radio" value="{{earthquake | jsondumps}}" name="quake"/> {{earthquake['properties']['place']}} <br>
+		{% endfor %}
+		<br> <input type = 'submit' value = "Go" name = "gobtn"/>
+	</form>
+</div>
+</body>
+</html>

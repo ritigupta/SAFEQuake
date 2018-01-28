@@ -1,0 +1,35 @@
+<!HTML DOCTYPE>
+<html>
+<head>
+<title>{{page_title}}</title>
+    <style>
+        h1 {font-size: 5em; color: #c0392b; font-family: "Roboto"; font-weight: 500; padding-left: 0.03em; line-height: 30px}
+        h2 {font-size: 2.2em; color: #383838; font-family: "Roboto"; font-weight: 400; padding-left: 0.05em}
+        h3 {font-size: 1.3em; color: #383838 ; font-family: "Roboto"; font-weight: 300; font-style: italic; padding-left: 0.05em; line-height: 50px}
+        body {background-color: #ffffff; font-family: Roboto; font-weight: 300}
+        form {font-family: "Roboto"; font-size: 1.3em; font-weight: 300; color: #383838; padding-left: 0.05em}
+        h4 {font-size: 1.3em; color: #000000; background-color: #f1c40f; font-family: "Roboto";text-align:center;font-weight:lighter}
+        span {font-size: 1em; color: #000000; background-color: #f1c40f; font-family: "Roboto";text-align:center;font-weight:normal}
+        hr{display:block; height:1px;border:0;border-top:1px solid #ccc; margin:1em 0; padding:0}
+    </style>
+</head>
+<body>
+<h4>Text your "FirstName LastName, Age (Country)" to <span>+1-(334)-339-7233</span> to mark yourself as safe.</h4>
+<h1>{{page_title}}</h1>
+    <h2> {{quake['properties']['place']}} </h2>
+        Magnitude: {{quake['properties']['mag']}} <br>
+        Alert Level: {{quake['properties']['alert']}} <br>
+        See more information at: <a href={{quake['properties']['url']}}>USGS earthquake details </a>
+<br>
+<br>
+<h3> Below is a list of civilians who have currently marked themselves as safe.</h3>
+    {% for survivor in survivors %}
+        {% if survivor.country == quake['properties']['place'][(quake['properties']['place'].find(","))+ 1:].strip() %}
+            {{survivor.name}}<hr>
+        {% endif %}
+    {% endfor %}
+</div>
+<br>
+</body>
+</html>
+
